@@ -16,7 +16,7 @@ phases:
       - npm install
       - npm run dist
       - docker-compose up --build -d
-      - docker build -t craftcms-aws .
+      - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
