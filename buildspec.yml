@@ -13,6 +13,7 @@ phases:
     commands:
       - echo Build started on 'date'
       - echo Building the Docker image...
+      - yum install sudo -y
       - curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
 
       - sudo yum install -y nodejs
