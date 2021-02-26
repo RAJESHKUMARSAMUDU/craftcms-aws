@@ -15,7 +15,13 @@ phases:
       - echo Building the Docker image...
       - npm install
       - npm run dist
-      - docker build -t $REPOSITORY_URI:latest .
+      - docker build \
+              -t $REPOSITORY_URI:latest \
+            --build-arg CRAFT_DATABASE_HOST=mysql2021.cu4ppdxx33vr.us-east-1.rds.amazonaws.com \
+            --build-arg CRAFT_DATABASE_USER=mysql2021 \
+            --build-arg CRAFT_DATABASE_PASSWORD:mysql2021 \
+            --build-arg CRAFT_DATABASE_NAME:mysql2021 \
+            --no-cache .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
